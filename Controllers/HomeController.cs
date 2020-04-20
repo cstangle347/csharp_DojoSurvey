@@ -1,5 +1,11 @@
 using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using DojoSurvey.Models;
+using Microsoft.AspNetCore.Http;
 
 namespace DojoSurvey.Controllers
 {
@@ -11,14 +17,10 @@ namespace DojoSurvey.Controllers
             return View("Index");
         }
 
-        [HttpPost("Result")]
-        public IActionResult Result(string Name, string Location, string FavLanguage, string Comment)
+        [HttpPost("result")]
+        public IActionResult Result(Survey results)
         {
-            ViewBag.Name = Name;
-            ViewBag.Location = Location;
-            ViewBag.FavLanguage = FavLanguage;
-            ViewBag.Comment = Comment;
-            return View();
+            return View("Result", results);
         }
     }
 }
